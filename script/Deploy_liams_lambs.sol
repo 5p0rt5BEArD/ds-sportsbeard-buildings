@@ -8,7 +8,7 @@ import {Actions} from "@ds/actions/Actions.sol";
 import {Node, Schema, State} from "@ds/schema/Schema.sol";
 import {ItemUtils, ItemConfig} from "@ds/utils/ItemUtils.sol";
 import {BuildingUtils, BuildingConfig, Material, Input, Output} from "@ds/utils/BuildingUtils.sol";
-import {DemonicAltar} from "../src/DemonicAltar.sol";
+import {LiamsLambs} from "../src/LiamsLambs.sol";
 
 using Schema for State;
 
@@ -57,25 +57,25 @@ contract Deployer is Script {
         vm.startBroadcast(playerDeploymentKey);
 
         // deploy the hammer and hammer factory
-        bytes24 fleshyBlob    = registerFleshyBlob(ds, extensionID);
-        bytes24 demonicAltar = registerDemonicAltar(ds, extensionID, fleshyBlob);
+        bytes24 lamb = registerLamb(ds, extensionID);
+        bytes24 liamsLambs = registerLiamsLambs(ds, extensionID, lamb);
 
         // dump deployed ids
-        console2.log("ItemKind", uint256(bytes32(fleshyBlob)));
-        console2.log("BuildingKind", uint256(bytes32(demonicAltar)));
+        console2.log("ItemKind", uint256(bytes32(lamb)));
+        console2.log("BuildingKind", uint256(bytes32(liamsLambs)));
 
         vm.stopBroadcast();
     }
 
     // register a new item id
-    function registerFleshyBlob(Game ds, uint64 extensionID) public returns (bytes24 itemKind) {
+    function registerLamb(Game ds, uint64 extensionID) public returns (bytes24 itemKind) {
         return ItemUtils.register(ds, ItemConfig({
             id: extensionID,
-            name: "Fleshy Blob",
-            icon: "11-307",
-            life: 10,
+            name: "Lamb",
+            icon: "16-202",
+            life: 20,
             defense: 0,
-            attack: 6,
+            attack: 12,
             stackable: false,
             implementation: address(0),
             plugin: ""
@@ -83,19 +83,18 @@ contract Deployer is Script {
     }
 
     // register a new
-    function registerDemonicAltar(Game ds, uint64 extensionID, bytes24 fleshyBlob) public returns (bytes24 buildingKind) {
+    function registerLiamsLambs(Game ds, uint64 extensionID, bytes24 lamb) public returns (bytes24 buildingKind) {
 
         // find the base item ids we will use as inputs for our hammer factory
         bytes24 none = 0x0;
         bytes24 kiki = ItemUtils.Kiki();
         bytes24 bouba = ItemUtils.Bouba();
         bytes24 semiote = ItemUtils.Semiote();
-        bytes24 lamb = 0x6a7a67f00e0567a30000000000000014000000000000000c;
 
         // register a new building kind
         return BuildingUtils.register(ds, BuildingConfig({
             id: extensionID,
-            name: "Demonic Altar",
+            name: "Liam`s Lambs",
             materials: [
                 Material({quantity: 10, item: kiki}), // these are what it costs to construct the factory
                 Material({quantity: 10, item: bouba}),
@@ -103,16 +102,16 @@ contract Deployer is Script {
                 Material({quantity: 0, item: none})
             ],
             inputs: [
-                Input({quantity: 1, item: lamb}), // these are required inputs to get the output
+                Input({quantity: 20, item: kiki}), // these are required inputs to get the output
                 Input({quantity: 0, item: none}),
-                Input({quantity: 0, item: none}),
+                Input({quantity: 12, item: semiote}),
                 Input({quantity: 0, item: none})
             ],
             outputs: [
-                Output({quantity: 1, item: fleshyBlob}) // this is the output that can be crafted given the inputs
+                Output({quantity: 1, item: lamb}) // this is the output that can be crafted given the inputs
             ],
-            implementation: address(new DemonicAltar()),
-            plugin: vm.readFile("src/DemonicAltar.js")
+            implementation: address(new LiamsLambs()),
+            plugin: vm.readFile("src/LiamsLambs.js")
         }));
     }
 }

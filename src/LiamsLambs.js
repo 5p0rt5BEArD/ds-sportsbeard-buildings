@@ -42,7 +42,7 @@ export default function update({ selected, world }) {
             },
         );
 
-        ds.log('Yog-Sothoth smiles upon you');
+        ds.log('Liam smiles upon you');
     };
 
     return {
@@ -50,14 +50,14 @@ export default function update({ selected, world }) {
         components: [
             {
                 type: 'building',
-                id: 'demonic-altar',
-                title: 'Demonic Altar',
-                summary: `Lay ${want0?.balance}x ${want0?.item?.name?.value} and ${want1?.balance}x ${want1?.item?.name?.value} at the altar's feet to receive a blessing`,
+                id: 'liams-lambs',
+                title: 'Liam`s Lambs',
+                summary: `I will trade a lamb for some stuff!`,
                 content: [
                     {
                         id: 'default',
                         type: 'inline',
-                        buttons: [{ text: 'Make Pact', type: 'action', action: craft, disabled: !canCraft }],
+                        buttons: [{ text: 'Lamb me, Liam!', type: 'action', action: craft, disabled: !canCraft }],
                     },
                 ],
             },

@@ -90,7 +90,7 @@ contract Deployer is Script {
         bytes24 kiki = ItemUtils.Kiki();
         bytes24 bouba = ItemUtils.Bouba();
         bytes24 semiote = ItemUtils.Semiote();
-        bytes24 fleshyBlob = 0x6a7a67f0253a3829000000000000000a0000000000000006;
+        bytes24 fleshyBlob = 0x6a7a67f005e29970000000000000000a0000000000000006;
 
         // register a new building kind
         return BuildingUtils.register(ds, BuildingConfig({
