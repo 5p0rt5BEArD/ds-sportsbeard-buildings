@@ -23,8 +23,7 @@ export default function update({ selected, world }) {
 
     // try to detect if the input slots contain enough stuff to craft
     const canCraft = selectedEngineer
-        && want0 && got0 && want0.balance == got0.balance
-        && want1 && got1 && want1.balance == got1.balance;
+        && want0 && got0 && want0.balance == got0.balance;
 
     const craft = () => {
         if (!selectedEngineer) {

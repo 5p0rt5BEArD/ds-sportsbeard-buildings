@@ -83,7 +83,7 @@ contract Deployer is Script {
     }
 
     // register a new
-    function registerDemonicAltar(Game ds, uint64 extensionID, bytes24 hammer) public returns (bytes24 buildingKind) {
+    function registerDemonicAltar(Game ds, uint64 extensionID, bytes24 fleshyBlob) public returns (bytes24 buildingKind) {
 
         // find the base item ids we will use as inputs for our hammer factory
         bytes24 none = 0x0;
@@ -108,7 +108,7 @@ contract Deployer is Script {
                 Input({quantity: 0, item: none})
             ],
             outputs: [
-                Output({quantity: 1, item: hammer}) // this is the output that can be crafted given the inputs
+                Output({quantity: 1, item: fleshyBlob}) // this is the output that can be crafted given the inputs
             ],
             implementation: address(new DemonicAltar()),
             plugin: vm.readFile("src/DemonicAltar.js")
