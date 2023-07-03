@@ -68,6 +68,11 @@ export default function update({ selected, world }) {
     }
 
     const canRestock = hasGreenForStocking && (freeGreenSlot != -1);
+    let restockNote = canBuy ? "Stock shop with 100 Glasses of Green Goo?" : `<p>Sorry you cannot restock.<\p>`;
+    if (!canBuy) {
+        restockNote += hasGreenForStocking ? `` : `<p>You need 100 Glasses of Green Goo.<\p>`;
+        restockNote += !freeGreenSlot ? `` : `<p>Shop cannot take any more Glasses!<\p>`;
+    }
 
     const buy = () => {
 
@@ -205,6 +210,7 @@ export default function update({ selected, world }) {
                         id: 'stock',
                         type: 'inline',
                         html: `
+                            ${restockNote}
                             <p>Green:${stocks[0]}</p>
                             <p>Red  :${stocks[1]}</p>
                             `,
