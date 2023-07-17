@@ -5,3 +5,10 @@ BUILDING_KIND_EXTENSION_ID=121417 GAME_ADDRESS=0x1D8e3A7Dc250633C192AC1bC9D141E1
 GreenGoo Shop maininet
 
 BUILDING_KIND_EXTENSION_ID=121417 GAME_ADDRESS=0x1D8e3A7Dc250633C192AC1bC9D141E1f95C419AB forge script script/DeployGreenGooShop.sol --broadcast --verify --rpc-url "https://network-ds-main.dev.playmint.com"
+
+Green Goo local 
+BUILDING_KIND_EXTENSION_ID=121417 GAME_ADDRESS=0x1D8e3A7Dc250633C192AC1bC9D141E1f95C419AB forge script script/DeployGreenGooShop.sol --broadcast --verify --rpc-url "http://localhost:8545"
+
+
+Komorebi House local
+BUILDING_KIND_EXTENSION_ID=126717 GAME_ADDRESS=0x1D8e3A7Dc250633C192AC1bC9D141E1f95C419AB forge script script/DeployKomorebiHouse.sol --broadcast --verify --rpc-url "http://localhost:8545"
